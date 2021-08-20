@@ -17,9 +17,7 @@ const pickr = Pickr.create({
   },
 });
 
-$('.pcr-interaction').append(
-  '<button data-clipboard-target="#foo" id="copy-btn" class="btn">COPY</button>'
-);
+$('.pcr-interaction').append('<button id="copy-btn">COPY</button>');
 
 var x = document.querySelectorAll('.pcr-type');
 
@@ -55,5 +53,3 @@ pickr.on('change', (color, source, instance) => {
 });
 
 document.body.style.background = localStorage.getItem('lastColor');
-
-pickr.setColorRepresentation('HEX')
