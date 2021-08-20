@@ -4,7 +4,7 @@ const pickr = Pickr.create({
 
   showAlways: true,
   swatches: null,
-  default: '#333333',
+  default: localStorage.getItem('lastColor'),
 
   components: {
     hue: true,
@@ -48,4 +48,12 @@ pickr.on('change', (color, source, instance) => {
   ${color.toRGBA()[1]}, 
   ${color.toRGBA()[2]}, 1)
   `;
+  localStorage.setItem(
+    'lastColor',
+    `rgba(${color.toRGBA()[0]}, ${color.toRGBA()[1]}, ${color.toRGBA()[2]}, 1)`
+  );
 });
+
+document.body.style.background = localStorage.getItem('lastColor');
+
+pickr.setColorRepresentation('HEX')
